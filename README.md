@@ -1,4 +1,4 @@
-py-utilities
-============
+# py-utilities
 
-Just a tiny module holding utilities I tend to use a lot. :D
+Just a module of utilities I tend to use a lot. Nothing to see; no dragons
+here.
