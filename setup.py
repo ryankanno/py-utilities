@@ -11,7 +11,6 @@ setup(name='py-utilities',
       author_email='ryankanno@localkinegrinds.com',
       packages=find_packages(),
       long_description=open('README.md').read(),
-      url="https://github.com/ryankanno/py-utilities"
-)
+      url="https://github.com/ryankanno/py-utilities")
 
 # vim: filetype=python
