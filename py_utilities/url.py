@@ -6,20 +6,17 @@ def join(*args):
     """
     Join url paths together
     """
-    if not len(args):
+    args_with_no_ws = filter(lambda arg: arg.strip(), args)
+
+    if not len(args_with_no_ws):
         return ""
 
-    if len(args) == 1:
-        return args[0]
+    if len(args_with_no_ws) == 1:
+        return args_with_no_ws[0]
 
-    joined = '/'.join(path.strip('/') for path in args)
+    joined = '/'.join(path.strip('/') for path in args_with_no_ws)
 
-    is_empty = dict.fromkeys(" /")
-
-    if all(c in is_empty for c in joined):
-        return ""
-
-    last_arg = args[-1]
+    last_arg = args_with_no_ws[-1]
 
     if len(last_arg) > 0:
         return joined + '/' if last_arg[-1] == '/' else joined
