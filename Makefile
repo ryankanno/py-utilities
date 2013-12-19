@@ -11,7 +11,7 @@ nosetests.coverage:
 	@$(NOSETESTS) --with-xcoverage --cover-package=py_utilities --cover-tests --with-doctest
 
 flake8:
-	@flake8 py_api tests
+	@flake8 py_utilities tests
 
 clean:
 	@rm -rf .coverage

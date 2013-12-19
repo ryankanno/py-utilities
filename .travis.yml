@@ -4,7 +4,6 @@ python:
 install:
   - pip install nosexcover
   - pip install coveralls
-script:
-    nosetests --with-xcoverage --cover-package=py_utilities --cover-tests --with-doctest
+script: make test
 after_success:
   - coveralls
