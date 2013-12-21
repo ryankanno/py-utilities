@@ -18,10 +18,7 @@ def join(*args):
 
     last_arg = args_with_no_ws[-1]
 
-    if len(last_arg) > 0:
-        return joined + '/' if last_arg[-1] == '/' else joined
-    else:
-        return joined
+    return joined + '/' if last_arg[-1] == '/' else joined
 
 
 # vim: filetype=python
