@@ -6,7 +6,7 @@ from py_utilities.url import join
 import unittest
 
 
-class TestApi(unittest.TestCase):
+class TestUrl(unittest.TestCase):
 
     def test_join(self):
         eq_(join(), '')
