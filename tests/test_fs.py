@@ -27,5 +27,9 @@ class TestFs(unittest.TestCase):
         f.close()
         mkdir_p('/tmp/foo/bar/rules/file')
 
+    def test_mkdir_p_should_not_raise_exception(self):
+        mkdir_p('/tmp/foo/bar/rules')
+        mkdir_p('/tmp/foo/bar/rules')
+
 
 # vim: filetype=python
