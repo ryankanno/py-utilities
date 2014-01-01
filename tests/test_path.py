@@ -13,5 +13,7 @@ class TestPath(unittest.TestCase):
         home = os.environ["HOME"]
         ok_(expanded_abspath("~") == home)
         ok_(expanded_abspath("~/foo") == os.path.join(home, 'foo'))
+        ok_(expanded_abspath("/foo") == "/foo")
+        ok_(expanded_abspath("/foo/bar") == "/foo/bar")
 
 # vim: filetype=python
