@@ -59,7 +59,7 @@ def _get_klass_or_func_from_str_impl(klass_or_func_as_str, lambda_test):
     module_name, kfun_name = klass_or_func_as_str.rsplit(".", 1)
     module = importlib.import_module(module_name)
     kfun = getattr(module, kfun_name) if hasattr(module, kfun_name) else None
-    return kfun if lambda_test(kfun) else None
+    return kfun if kfun and lambda_test(kfun) else None
 
 
 def _get_klass_or_func_from_file_impl(path_to_file, klass_or_fun_as_str,
@@ -75,6 +75,6 @@ def _get_klass_or_func_from_file_impl(path_to_file, klass_or_fun_as_str,
     kfun = getattr(module, klass_or_fun_as_str) \
         if hasattr(module, klass_or_fun_as_str) else None
 
-    return kfun if lambda_test(kfun) else None
+    return kfun if kfun and lambda_test(kfun) else None
 
 # vim: filetype=python
