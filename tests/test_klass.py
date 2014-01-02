@@ -20,24 +20,16 @@ class TestKlass(unittest.TestCase):
 
     def setUp(self):
         self.cwd = os.path.dirname(os.path.realpath(__file__))
+        self.test_files = ['test_klass.py', 'test_klass.pyc']
 
     def test_get_func_from_file(self):
-        func = get_func_from_file(os.path.join(self.cwd, 'test_klass.py'),
-                                  'test_func')
-        eq_(func(), 3)
-
-        func = get_func_from_file(os.path.join(self.cwd, 'test_klass.pyc'),
-                                  'test_func')
-        eq_(func(), 3)
+        for t in self.test_files:
+            func = get_func_from_file(os.path.join(self.cwd, t), 'test_func')
+            eq_(func(), 3)
 
     def test_get_klass_from_file(self):
-        klass = get_klass_from_file(os.path.join(self.cwd, 'test_klass.py'),
-                                    'Test')
-        eq_(type(Test), type(klass))
-
-        klass = get_klass_from_file(os.path.join(self.cwd, 'test_klass.pyc'),
-                                    'Test')
-        eq_(type(Test), type(klass))
-
+        for t in self.test_files:
+            klass = get_klass_from_file(os.path.join(self.cwd, t), 'Test')
+            eq_(type(Test), type(klass))
 
 # vim: filetype=python
