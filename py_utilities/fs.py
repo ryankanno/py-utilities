@@ -18,4 +18,13 @@ def mkdir_p(path):
         else:
             raise
 
+
+def touch(path, times=None):
+    """
+    Touches a file. If times is None, then the file’s access and modified
+    times are set to the current time.
+    """
+    with file(path, 'a'):
+        os.utime(path, times)
+
 # vim: filetype=python
