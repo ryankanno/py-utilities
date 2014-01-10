@@ -18,8 +18,6 @@ def truncate(str, length, trailing_chars='...'):
     >>> truncate('hello', 100)
     'hello'
 
-    >>> print truncate(u"今日は", 1)
-    '今...'
     """
     return (str[:length] + trailing_chars) if len(str) > length else str
 
