@@ -4,6 +4,30 @@
 import operator
 
 
+def has_dupes(iterable):
+    """
+    Returns true if iterable contains dupes.
+    All values in the iterable need to be hashable
+
+    >>> has_dupes(['1', '2', '3', '3'])
+    True
+
+    >>> has_dupes(['1', '2', '3', '4'])
+    False
+
+    >>> has_dupes(('1', '1', '3', '4'))
+    True
+
+    >>> has_dupes((1, 2, 3, 4))
+    False
+
+    >>> has_dupes([])
+    False
+    """
+    curr_size = len(iterable)
+    return False if curr_size == 0 else curr_size != len(set(iterable))
+
+
 def index_min(seq):
     """
     Returns the index of the first occurrence minima in a sequence
