@@ -12,6 +12,15 @@ def csv_to_headers(file_path, has_headers=None, delimiters=[',', ';']):
     return _csv_to_headers_rows_tuple(file_path, has_headers, delimiters)[0]
 
 
+def list_to_csv(file_path, data_as_list, delimiter=',', quoting=csv.QUOTE_ALL):
+    """
+    Writes data_as_list into a csv file at file_path
+    """
+    with open(file_path, 'wb') as f:
+        writer = csv.writer(f, delimiter=delimiter, quoting=quoting)
+        writer.writerows(data_as_list)
+
+
 def _csv_to_headers_rows_tuple(file_path,
                                has_headers=None,
                                delimiters=[',', ';']):
