@@ -1,6 +1,36 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import array
+
+
+def ascii_to_str(ascii_list):
+    """
+    Returns a string from a list of ascii values
+
+    >>> ascii_to_str([104, 101, 108, 108, 111])
+    'hello'
+
+    >>> ascii_to_str([82, 121, 97, 110])
+    'Ryan'
+
+    """
+    return array.array('B', ascii_list).tostring()
+
+
+def str_to_ascii(str):
+    """
+    Returns a list of ascii values from a string
+
+    >>> str_to_ascii('hello, world')
+    [104, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100]
+
+    >>> str_to_ascii('Ryan')
+    [82, 121, 97, 110]
+
+    """
+    return array.array('B', str).tolist()
+
 
 def truncate(str, length, trailing_chars='...'):
     """
