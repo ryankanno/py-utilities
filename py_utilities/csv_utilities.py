@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
 import csv
+import string
 
 
 def csv_to_list(file_path, has_headers=None, delimiters=[',', ';']):
@@ -10,6 +12,27 @@ def csv_to_list(file_path, has_headers=None, delimiters=[',', ';']):
 
 def csv_to_headers(file_path, has_headers=None, delimiters=[',', ';']):
     return _csv_to_headers_rows_tuple(file_path, has_headers, delimiters)[0]
+
+
+def csv_to_html(file_path, has_headers=None, delimiters=[',', ';']):
+    """
+    Writes csv instream as html outstream
+    """
+    headers, rows = _csv_to_headers_rows_tuple(file_path,
+                                               has_headers,
+                                               delimiters)
+    table_string = ""
+    if headers:
+        table_string += "<thead><tr><th>" + \
+                        string.join(headers, "</th><th>") + \
+                        "</th></tr></thead>"
+
+    for row in rows:
+        table_string += "<tbody><tr><td>" + \
+                        string.join(row, "</td><td>") + \
+                        "</td></tr></tbody>"
+
+    return '<table>' + table_string + '</table>'
 
 
 def list_to_csv(file_path, data_as_list, delimiter=',', quoting=csv.QUOTE_ALL):

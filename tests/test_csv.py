@@ -4,6 +4,7 @@
 from nose.tools import ok_
 import os
 from py_utilities.csv_utilities import csv_to_headers
+from py_utilities.csv_utilities import csv_to_html
 from py_utilities.csv_utilities import csv_to_list
 from py_utilities.csv_utilities import list_to_csv
 import tempfile
@@ -31,6 +32,10 @@ class TestCsv(unittest.TestCase):
         ok_(len(data) == 2)
         data = csv_to_headers(self.csv_no_headers_path, has_headers=False)
         ok_(len(data) == 0)
+
+    def test_csv_to_html(self):
+        html = csv_to_html(self.csv_headers_path)
+        ok_(html.count("<tr>") == 4)
 
     def test_list_to_csv(self):
         tmp_data = [['Ryan', '1'], ['Bob', '2'], ['Foo', '3']]
