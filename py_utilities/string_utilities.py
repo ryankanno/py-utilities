@@ -1,7 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
+import string
 import array
+
+
+def strip_punctuations(str):
+    """
+    Returns words from str
+
+    >>> strip_punctuations("asdfs. asdfasdf. asdfsaf? sadfasf!")
+    'asdfs asdfasdf asdfsaf sadfasf'
+
+    >>> strip_punctuations("asdfs.....asdfasdf. asdfsaf? sadfasf!")
+    'asdfsasdfasdf asdfsaf sadfasf'
+
+    >>> strip_punctuations("")
+    ''
+    """
+    return str.translate(string.maketrans("", ""), string.punctuation)
 
 
 def ascii_to_str(ascii_list):
