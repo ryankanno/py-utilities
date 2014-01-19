@@ -8,7 +8,7 @@ import array
 
 def strip_punctuations(str):
     """
-    Returns words from str
+    Returns string stripped of punctuations
 
     >>> strip_punctuations("asdfs. asdfasdf. asdfsaf? sadfasf!")
     'asdfs asdfasdf asdfsaf sadfasf'
