@@ -2,8 +2,22 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import absolute_import
-import string
 import array
+import random
+import string
+
+
+def random_string(length=16, chars=string.letters+string.digits):
+    """
+    Returns a random string of size length
+
+    >>> test = random_string()
+
+    >>> len(test)
+    16
+
+    """
+    return ''.join(random.choice(chars) for x in range(length))
 
 
 def strip_punctuations(str):
