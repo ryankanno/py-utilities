@@ -17,5 +17,6 @@ class TestText(unittest.TestCase):
     def test_lines(self):
         list_of_lines = lines(self.csv_headers_path)
         ok_(len(list_of_lines) == 4)
+        ok_(list_of_lines[0] == "Name,Age\n")
 
 # vim: filetype=python
