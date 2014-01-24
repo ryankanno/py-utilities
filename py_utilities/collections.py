@@ -1,7 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
+import collections
 import operator
+
+
+def flatten(lst):
+    """
+    Flattens a list
+
+    Taken from: https://stackoverflow.com/questions/2158395/\
+    flatten-an-irregular-list-of-lists-in-python/17868434#17868434
+    """
+    for elmt in lst:
+        if isinstance(elmt, collections.Iterable) \
+                and not isinstance(elmt, basestring):
+            for sub in flatten(elmt):
+                yield sub
+        else:
+            yield elmt
 
 
 def has_dupes(iterable):
