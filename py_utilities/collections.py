@@ -12,6 +12,16 @@ def flatten(lst):
 
     Taken from: https://stackoverflow.com/questions/2158395/\
     flatten-an-irregular-list-of-lists-in-python/17868434#17868434
+
+    >>> list(flatten([1,2,[1],[1,2,3]]))
+    [1, 2, 1, 1, 2, 3]
+
+    >>> list(flatten([]))
+    []
+
+    >>> list(flatten([1,2,3]))
+    [1, 2, 3]
+
     """
     for elmt in lst:
         if isinstance(elmt, collections.Iterable) \
