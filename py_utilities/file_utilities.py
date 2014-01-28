@@ -1,8 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import fileinput
 import hashlib
 import os
+
+
+def concat(filenames, outfile_path):
+    """
+    Concatenates filename contents to outfile_path
+    """
+    with open(outfile_path, 'w') as f:
+        for line in fileinput.input(filenames):
+            f.write(line)
 
 
 def file_ext(file_path):
