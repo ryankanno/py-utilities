@@ -64,6 +64,22 @@ def str_to_ascii(str):
     return array.array('B', str).tolist()
 
 
+def str_to_bool(str_val):
+    """
+    Returns True if str_val is in ("yes", "y", "true",  "t", "1"), False if
+    str_val is in ("no",  "n", "false", "f", "0", "0.0", "", "none", "[]",
+    "{}"), and ValueError otherwise.
+    """
+    if str(str_val).lower() in ("yes", "y", "true",  "t", "1"):
+        return True
+
+    if str(str_val).lower() in ("no",  "n", "false", "f", "0", "0.0", "",
+                                "none", "[]", "{}"):
+        return False
+
+    raise ValueError
+
+
 def truncate(str, length, trailing_chars='...'):
     """
     Returns a truncated str of length with a trailing '...'
