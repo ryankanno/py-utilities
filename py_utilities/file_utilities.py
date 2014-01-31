@@ -41,6 +41,12 @@ def file_ext(file_path):
 def file_hexdigest(file_path, algo='md5'):
     """
     Returns the hexdigest hash of file_path using algo
+
+    >>> cwd = os.path.dirname(os.path.abspath(__file__))
+
+    >>> file_hexdigest(os.path.join(cwd, '__init__.py'), algo='md5')
+    'd41d8cd98f00b204e9800998ecf8427e'
+
     """
     hash = getattr(hashlib, algo)()
 
