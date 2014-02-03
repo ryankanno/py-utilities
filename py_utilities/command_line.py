@@ -4,7 +4,7 @@
 import sys
 
 
-def prompt_yes_no(prompt_msg, default=None, num_retries=5):
+def prompt_yes_no(prompt_msg, default=None, num_retries=5, input=raw_input):
     """
     Yes/no prompts a user with `prompt_msg`. Default can be `yes`, `no`, or
     None. If user answer is not valid, he/she has `num_retries` to provide a
@@ -23,7 +23,7 @@ def prompt_yes_no(prompt_msg, default=None, num_retries=5):
     prompt_msg = "{0} {1} ".format(prompt_msg, _get_prompt_defaults(default))
 
     while True:
-        choice = raw_input(prompt_msg).lower()
+        choice = input(prompt_msg).lower()
 
         if default is not None and choice == '':
             choice = default
