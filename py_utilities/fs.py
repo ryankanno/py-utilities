@@ -4,6 +4,7 @@
 from contextlib import contextmanager
 import errno
 import os
+import shutil
 
 
 @contextmanager
@@ -29,6 +30,13 @@ def mkdir_p(path):
             pass
         else:
             raise
+
+
+def rm_rf(path, ignore_errors=True):
+    """
+    Recursive directory deletion function.
+    """
+    shutil.rmtree(path, ignore_errors=ignore_errors)
 
 
 def touch(path, times=None):
