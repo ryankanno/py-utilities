@@ -20,9 +20,15 @@ def strip_if_true(text, strip):
 
 
 def wrap(text, width=70, **kwargs):
-    """
+    r"""
     Returns wrapped text
+
+    >>> test = '12345\n 12345\n 12345\n 12345\n'
+
+    >>> wrap(test, width=3)
+    '123\n45\n123\n45\n123\n45\n123\n45'
+
     """
-    return textwrap.fill(textwrap.wrap(text, width, kwargs))
+    return textwrap.fill(text, width, **kwargs)
 
 # vim: filetype=python
