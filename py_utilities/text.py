@@ -1,7 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import re
 import textwrap
+
+
+def find_ips(text):
+    """
+    Returns a list of all ip addresses in text
+
+    >>> test_ips = "192.123.23.12 32.23.2.2 fasfafa"
+
+    >>> find_ips(test_ips)
+    ['192.123.23.12', '32.23.2.2']
+
+    >>> test_no_ips = "asdjfkalsdjf sdkfjaksd aksdfjasdf asdfsdf"
+
+    >>> find_ips(test_no_ips)
+    []
+    """
+    return re.findall('(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})', text)
 
 
 def lines(file_path, strip=True):
