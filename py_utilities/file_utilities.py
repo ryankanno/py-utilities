@@ -4,6 +4,8 @@
 import fileinput
 import hashlib
 import os
+import shutil
+import sys
 
 
 def concat(filenames, outfile_path):
@@ -53,6 +55,14 @@ def file_hexdigest(file_path, algo='md5'):
     with open(file_path, 'rb') as f:
         hash.update(f.read())
     return hash.hexdigest()
+
+
+def print_file_contents(filename, file=sys.stdout):
+    """
+    Prints contents of filename to a file-like object, `file`
+    """
+    with open(filename, 'r') as f:
+        shutil.copyfileobj(f, file)
 
 
 # vim: filetype=python
