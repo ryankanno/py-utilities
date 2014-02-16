@@ -37,7 +37,7 @@ def mkdir_p(path):
 
 def rm_if_exists(path):
     """
-    Removes a path silently
+    Removes a file silently
     """
     try:
         os.remove(path)

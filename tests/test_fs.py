@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from helpers import write_file_contents
 from nose.tools import eq_
 from nose.tools import ok_
 from nose.tools import raises
 import os
 from py_utilities.fs import cd
 from py_utilities.fs import mkdir_p
+from py_utilities.fs import rm_if_exists
+from py_utilities.fs import rm_rf
 from py_utilities.fs import touch
 import shutil
 import tempfile
@@ -56,6 +59,32 @@ class TestFs(unittest.TestCase):
         tmp_foo_bar_rules = os.path.join(self.temp_dir, 'foo', 'bar', 'rules')
         mkdir_p(tmp_foo_bar_rules)
         mkdir_p(tmp_foo_bar_rules)
+
+    def test_rm_rf(self):
+        tmp_foo = os.path.join(self.temp_dir, 'foo')
+        tmp_foo_bar = os.path.join(self.temp_dir, 'foo', 'bar')
+        tmp_foo_bar_rules = os.path.join(self.temp_dir, 'foo', 'bar', 'rules')
+        os.mkdir(tmp_foo)
+        os.mkdir(tmp_foo_bar)
+        os.mkdir(tmp_foo_bar_rules)
+        rm_rf(tmp_foo)
+        ok_(not os.path.exists(tmp_foo))
+        ok_(not os.path.exists(tmp_foo_bar))
+        ok_(not os.path.exists(tmp_foo_bar_rules))
+
+    def test_rm_if_exists(self):
+        tmp_foo = os.path.join(self.temp_dir, 'foo')
+        os.mkdir(tmp_foo)
+        tmp_foo_bar = os.path.join(self.temp_dir, 'foo', 'bar')
+        write_file_contents(tmp_foo_bar, "BAR")
+        rm_if_exists(tmp_foo_bar)
+        ok_(not os.path.exists(tmp_foo_bar))
+
+    @raises(OSError)
+    def test_rm_if_exists_should_raise_exception_with_dir(self):
+        tmp_foo = os.path.join(self.temp_dir, 'foo')
+        os.mkdir(tmp_foo)
+        rm_if_exists(tmp_foo)
 
     def test_touch(self):
         file = os.path.join(self.cwd, 'test_fs.py')
