@@ -8,13 +8,12 @@ import shutil
 import sys
 
 
-def concat(filenames, outfile_path):
+def concat(filenames, outfile):
     """
-    Concatenates filename contents to outfile_path
+    Concatenates filename contents in filename list to outfile
     """
-    with open(outfile_path, 'w') as f:
-        for line in fileinput.input(filenames):
-            f.write(line)
+    for line in fileinput.input(filenames):
+        outfile.write(line)
 
 
 def file_ext(file_path):
