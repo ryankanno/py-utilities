@@ -4,6 +4,13 @@
 import sys
 
 
+def piped(input=sys.stdin):
+    """
+    Returns input if input is not connected to a tty(-like) device
+    """
+    return input if not input.isatty() else None
+
+
 def prompt_yes_no(prompt_msg, default=None, num_retries=5, input=raw_input):
     """
     Yes/no prompts a user with `prompt_msg`. Default can be `yes`, `no`, or
