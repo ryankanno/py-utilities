@@ -64,4 +64,11 @@ def print_file_contents(filename, file=sys.stdout):
         shutil.copyfileobj(f, file)
 
 
+def write_file(path, contents):
+    """
+    Writes contents to file path
+    """
+    with open(path, 'w') as f:
+        f.write(contents)
+
 # vim: filetype=python
