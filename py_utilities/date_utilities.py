@@ -5,6 +5,13 @@
 def is_weekday(date):
     """
     Returns true if date is a weekday, false otherwise
+
+    >>> import datetime; from datetime import timedelta;
+    >>> date = datetime.datetime.now()
+    >>> last_friday = date - timedelta(days=date.weekday()) \
+    + timedelta(days=4, weeks=-1)
+    >>> is_weekday(last_friday)
+    True
     """
     return date.isoweekday() < 6
 
