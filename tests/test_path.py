@@ -4,6 +4,7 @@
 from nose.tools import ok_
 import os
 from py_utilities.path import expanded_abspath
+from py_utilities.path import filename
 import unittest
 
 
@@ -15,5 +16,11 @@ class TestPath(unittest.TestCase):
         ok_(expanded_abspath("~/foo") == os.path.join(home, 'foo'))
         ok_(expanded_abspath("/foo") == "/foo")
         ok_(expanded_abspath("/foo/bar") == "/foo/bar")
+
+    def test_filename(self):
+        paths = ['/foo/bar/', '/foo/bar', 'foo/bar/', 'foo/bar',
+                 '\\foo\\bar\\', '\\foo\\bar', 'foo\\bar\\', 'foo\\bar']
+        for path in paths:
+            ok_(filename(path) == 'bar')
 
 # vim: filetype=python
