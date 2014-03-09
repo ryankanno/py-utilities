@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from nose.tools import eq_
-from py_utilities.url import join
+from py_utilities.http.url_utilities import join
 import unittest
 
 

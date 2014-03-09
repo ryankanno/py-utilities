@@ -3,8 +3,8 @@
 
 from nose.tools import ok_
 import os
-from py_utilities.text import lines
-from py_utilities.text import strip_if_true
+from py_utilities.text.text_utilities import lines
+from py_utilities.text.text_utilities import strip_if_true
 import unittest
 
 
@@ -12,7 +12,7 @@ class TestText(unittest.TestCase):
 
     def setUp(self):
         self.cwd = os.path.dirname(os.path.realpath(__file__))
-        self.csv_headers_path = os.path.join(self.cwd, 'data',
+        self.csv_headers_path = os.path.join(self.cwd, '..', 'data',
                                              'test_csv_to_list_headers.csv')
 
     def test_lines(self):

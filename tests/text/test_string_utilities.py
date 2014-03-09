@@ -3,7 +3,7 @@
 
 from nose.tools import ok_
 from nose.tools import raises
-from py_utilities.string_utilities import str_to_bool
+from py_utilities.text.string_utilities import str_to_bool
 import unittest
 
 

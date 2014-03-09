@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from py_utilities.dev import deprecated
+from py_utilities.dev.dev_utilities import deprecated
 import unittest
 import warnings
 

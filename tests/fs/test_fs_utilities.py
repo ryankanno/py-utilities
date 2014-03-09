@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from helpers import write_file_contents
+from ..helpers import write_file_contents
 from nose.tools import eq_
 from nose.tools import ok_
 from nose.tools import raises
 import os
-from py_utilities.fs import cd
-from py_utilities.fs import mkdir_p
-from py_utilities.fs import rm_if_exists
-from py_utilities.fs import rm_rf
-from py_utilities.fs import touch
+from py_utilities.fs.fs_utilities import cd
+from py_utilities.fs.fs_utilities import mkdir_p
+from py_utilities.fs.fs_utilities import rm_if_exists
+from py_utilities.fs.fs_utilities import rm_rf
+from py_utilities.fs.fs_utilities import touch
 import shutil
 import tempfile
 import unittest
@@ -87,7 +87,7 @@ class TestFs(unittest.TestCase):
         rm_if_exists(tmp_foo)
 
     def test_touch(self):
-        file = os.path.join(self.cwd, 'test_fs.py')
+        file = os.path.join(self.cwd, 'test_fs_utilities.py')
         curr_access_time = os.path.getmtime(file)
         touch(file)
         new_access_time = os.path.getmtime(file)

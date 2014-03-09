@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from helpers import write_file_contents
+from ..helpers import write_file_contents
 from nose.tools import eq_
 import os
-from py_utilities.file_utilities import concat
-from py_utilities.file_utilities import print_file_contents
+from py_utilities.fs.file_utilities import concat
+from py_utilities.fs.file_utilities import print_file_contents
 import shutil
 import StringIO
 import tempfile
@@ -17,7 +17,7 @@ class TestFileUtilities(unittest.TestCase):
     def setUp(self):
         self.cwd = os.path.dirname(os.path.realpath(__file__))
         self.temp_dir = tempfile.gettempdir()
-        self.test_file = os.path.join(self.cwd, 'data',
+        self.test_file = os.path.join(self.cwd, '..', 'data',
                                       'test_csv_to_list_headers.csv')
 
     def tearDown(self):

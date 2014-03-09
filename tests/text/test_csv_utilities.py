@@ -3,10 +3,10 @@
 
 from nose.tools import ok_
 import os
-from py_utilities.csv_utilities import csv_to_headers
-from py_utilities.csv_utilities import csv_to_html
-from py_utilities.csv_utilities import csv_to_list
-from py_utilities.csv_utilities import list_to_csv
+from py_utilities.text.csv_utilities import csv_to_headers
+from py_utilities.text.csv_utilities import csv_to_html
+from py_utilities.text.csv_utilities import csv_to_list
+from py_utilities.text.csv_utilities import list_to_csv
 import tempfile
 import unittest
 
@@ -15,10 +15,10 @@ class TestCsv(unittest.TestCase):
 
     def setUp(self):
         self.cwd = os.path.dirname(os.path.realpath(__file__))
-        self.csv_headers_path = os.path.join(self.cwd, 'data',
+        self.csv_headers_path = os.path.join(self.cwd, '..', 'data',
                                              'test_csv_to_list_headers.csv')
         self.csv_no_headers_path = os.path.join(
-            self.cwd, 'data', 'test_csv_to_list_no_headers.csv')
+            self.cwd, '..', 'data', 'test_csv_to_list_no_headers.csv')
         self.temp_dir = tempfile.gettempdir()
 
     def test_csv_to_list(self):

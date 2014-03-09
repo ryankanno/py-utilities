@@ -3,8 +3,8 @@
 
 from nose.tools import ok_
 import os
-from py_utilities.path import expanded_abspath
-from py_utilities.path import filename
+from py_utilities.fs.path_utilities import expanded_abspath
+from py_utilities.fs.path_utilities import filename
 import unittest
 
 
