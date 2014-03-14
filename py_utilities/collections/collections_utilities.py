@@ -94,6 +94,13 @@ def index_max(seq):
     return max(enumerate(seq), key=operator.itemgetter(1))[0]
 
 
+def unique(lst):
+    """
+    Returns the unique values in a list `lst`
+    """
+    return list(set(lst))
+
+
 def value_min(seq):
     """
     Returns the value of the first occurrence minima in a sequence
