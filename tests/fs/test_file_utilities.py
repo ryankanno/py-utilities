@@ -5,7 +5,7 @@ from ..helpers import write_file_contents
 from nose.tools import eq_
 import os
 from py_utilities.fs.file_utilities import concat
-from py_utilities.fs.file_utilities import print_file_contents
+from py_utilities.fs.file_utilities import copy_file
 import shutil
 import StringIO
 import tempfile
@@ -38,7 +38,7 @@ class TestFileUtilities(unittest.TestCase):
 
     def test_print_file_contents(self):
         output = StringIO.StringIO()
-        print_file_contents(self.test_file, output)
+        copy_file(self.test_file, output)
         eq_(output.getvalue(), 'Name,Age\nRyan,21\nBob,22\nJoe,23\n')
 
 # vim: filetype=python

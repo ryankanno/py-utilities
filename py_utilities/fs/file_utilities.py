@@ -1,19 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import fileinput
 import hashlib
 import os
 import shutil
 import sys
 
 
-def concat(filenames, outfile):
+def concat(file_paths, file):
     """
-    Concatenates filename contents in filename list to outfile
+    Concatenates contents in file_paths list to a file-like object, `file`
     """
-    for line in fileinput.input(filenames):
-        outfile.write(line)
+    for file_path in file_paths:
+        copy_file(file_path, file)
+
+
+def copy_file(file_path, file=sys.stdout):
+    """
+    Copy contents at file_path to a file-like object, `file`
+    """
+    with open(file_path, 'r') as f:
+        shutil.copyfileobj(f, file)
 
 
 def file_ext(file_path):
@@ -56,19 +63,11 @@ def file_hexdigest(file_path, algo='md5'):
     return hash.hexdigest()
 
 
-def print_file_contents(filename, file=sys.stdout):
-    """
-    Prints contents of filename to a file-like object, `file`
-    """
-    with open(filename, 'r') as f:
-        shutil.copyfileobj(f, file)
-
-
-def write_file(path, contents):
+def write_file(file_path, contents):
     """
     Writes contents to file path
     """
-    with open(path, 'w') as f:
+    with open(file_path, 'w') as f:
         f.write(contents)
 
 # vim: filetype=python
