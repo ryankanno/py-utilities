@@ -6,6 +6,7 @@ from nose.tools import eq_
 import os
 from py_utilities.fs.file_utilities import concat
 from py_utilities.fs.file_utilities import copy_file
+from py_utilities.fs.file_utilities import write_file
 import shutil
 import StringIO
 import tempfile
@@ -36,9 +37,16 @@ class TestFileUtilities(unittest.TestCase):
         concat([tmp_foo_bar, tmp_foo_rules], output)
         eq_(output.getvalue(), "BAR\nRULES\n")
 
-    def test_print_file_contents(self):
+    def test_copy_file(self):
         output = StringIO.StringIO()
         copy_file(self.test_file, output)
         eq_(output.getvalue(), 'Name,Age\nRyan,21\nBob,22\nJoe,23\n')
+
+    def test_write_file(self):
+        tmp_file = os.path.join(self.temp_dir, 'file')
+        write_file(tmp_file, "Hello World")
+        with open(tmp_file, 'r') as f:
+            content = f.read()
+        eq_(content, "Hello World")
 
 # vim: filetype=python
