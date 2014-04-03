@@ -20,8 +20,21 @@ def get_first_dir_path(dir_paths):
     """
     Returns the first valid dir path in dir_paths
     """
-    dir_paths = [path for path in dir_paths if os.path.isdir(path)]
-    return dir_paths[0] if len(dir_paths) > 0 else None
+    return _get_first_in_path(dir_paths, lambda path: os.path.isdir(path))
 
+
+def get_first_file_path(file_paths):
+    """
+    Returns the first valid file path in file_paths
+    """
+    return _get_first_in_path(file_paths, lambda path: os.path.isfile(path))
+
+
+def _get_first_in_path(paths, function):
+    """
+    Returns the first found path in paths that function resolves
+    """
+    found = [path for path in paths if function(path)]
+    return found[0] if len(found) > 0 else None
 
 # vim: filetype=python
