@@ -6,6 +6,7 @@ import os
 from py_utilities.fs.path_utilities import expanded_abspath
 from py_utilities.fs.path_utilities import filename
 from py_utilities.fs.path_utilities import get_first_dir_path
+from py_utilities.fs.path_utilities import get_first_file_path
 import tempfile
 import unittest
 
@@ -34,6 +35,13 @@ class TestPath(unittest.TestCase):
         ok_(home == get_first_dir_path([home, dir]))
         ok_(home == get_first_dir_path([fake, home, dir]))
         ok_(dir == get_first_dir_path([fake, dir, home]))
+
+    def test_get_first_file_path(self):
+        f = tempfile.mkstemp()[1]
+        fake = '/foo/bar/x/y/z/a'
+        ok_(f == get_first_file_path([f]))
+        ok_(f == get_first_file_path([f, fake]))
+        ok_(f == get_first_file_path([fake, f]))
 
 
 # vim: filetype=python
