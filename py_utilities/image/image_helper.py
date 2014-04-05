@@ -15,8 +15,4 @@ class Size(object):
     def size(self):
         return (self.width, self.height)
 
-
-
-
-
 # vim: filetype=python
