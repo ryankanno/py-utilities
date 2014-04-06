@@ -5,3 +5,7 @@
 
 Just a module of utilities I tend to use a lot. Nothing to see; no dragons
 here.
+
+## TODO
+
+Need to figure out how to pass run -p to nosetest (or use coverage to aggregate after)
