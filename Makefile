@@ -9,7 +9,7 @@ nosetests:
 	@$(NOSETESTS) --with-doctest
 
 nosetests.coverage:
-	@$(NOSETESTS) --with-xcoverage --cover-package=py_utilities --cover-tests --with-doctest
+	@$(NOSETESTS) --with-xcoverage --cover-package=py_utilities --cover-tests --cover-erase --with-doctest
 
 flake8:
 	@flake8 py_utilities tests
