@@ -20,7 +20,7 @@ def browser(html, ip='127.0.0.1', port=0):
 def deprecated(message=""):
     def decorator(deprecated_func):
         msg = message or \
-            "Function '{}' is deprecated.".format(deprecated_func.__name__)
+            "Function '{0}' is deprecated.".format(deprecated_func.__name__)
 
         @functools.wraps(deprecated_func)
         def wrapper(*args, **kwargs):
