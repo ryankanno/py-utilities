@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import binascii
 import hashlib
 import os
 import shutil
@@ -21,6 +22,14 @@ def copy_file(file_path, file=sys.stdout):
     """
     with open(file_path, 'r') as f:
         shutil.copyfileobj(f, file)
+
+
+def crc32(file_path):
+    """
+    Computes cyclic redundancy check checksum of the contents of file_path
+    """
+    with open(file_path, 'rb') as f:
+        return "%08X" % (binascii.crc32(f.read()) & 0xFFFFFFFF)
 
 
 def file_ext(file_path):
