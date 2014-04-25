@@ -4,6 +4,9 @@
 import calendar
 from datetime import datetime
 import random
+import time
+
+EPOCH = time.gmtime(0)
 
 
 def is_leap_year(year):
