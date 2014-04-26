@@ -6,7 +6,15 @@ from datetime import datetime
 import random
 import time
 
-EPOCH = time.gmtime(0)
+"""
+Epoch represented as a struct_time
+"""
+EPOCH_AS_STRUCT_TIME = time.gmtime(0)
+
+"""
+Epoch represented as a datetime
+"""
+EPOCH_AS_DATETIME = datetime(*EPOCH_AS_STRUCT_TIME[:6])
 
 
 def is_leap_year(year):
