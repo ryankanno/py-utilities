@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import calendar
+from datetime import timedelta
 from nose.tools import ok_
 from py_utilities.time.date_utilities import EPOCH_AS_STRUCT_TIME
 from py_utilities.time.date_utilities import EPOCH_AS_DATETIME
 from py_utilities.time.date_utilities import next_day
+from py_utilities.time.date_utilities import random_datetime
+import pytz
 import time
 import unittest
 
@@ -31,5 +35,17 @@ class TestDateUtilities(unittest.TestCase):
         ok_(next_wednesday.year == 1970)
         ok_(next_wednesday.month == 1)
 
+    def test_random_datetime_with_utc_tz(self):
+        for x in xrange(1000):
+            x += 1
+            start_datetime = pytz.utc.localize(EPOCH_AS_DATETIME)
+            start_timestamp = calendar.timegm(start_datetime.utctimetuple())
+            end_datetime = pytz.utc.localize(EPOCH_AS_DATETIME +
+                                             timedelta(days=x))
+            end_timestamp = calendar.timegm(end_datetime.utctimetuple())
+            random = random_datetime(start_timestamp, end_timestamp,
+                                     pytz.utc)
+            ok_(random >= start_datetime)
+            ok_(end_datetime >= random)
 
 # vim: filetype=apython

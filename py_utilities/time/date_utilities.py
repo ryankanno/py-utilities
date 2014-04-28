@@ -74,6 +74,7 @@ def random_datetime(start_timestamp, end_timestamp, tz=None):
     Returns a random datetime between two timestamps and converts to the tz if
     provided
     """
+    assert end_timestamp > start_timestamp
     interval = end_timestamp - start_timestamp
     random_timestamp = start_timestamp + (random.random() * interval)
     return datetime.fromtimestamp(random_timestamp, tz)
