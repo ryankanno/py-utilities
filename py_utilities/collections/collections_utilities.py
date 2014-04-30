@@ -97,6 +97,51 @@ def index_max(seq):
 def unique(lst):
     """
     Returns the unique values in a list `lst`
+
+    >>> unique([1,1,1,1,1,1,1])
+    [1]
+
+    >>> x = unique([1,1,1,1,1,1,1,2])
+
+    >>> 1 in x
+    True
+
+    >>> 2 in x
+    True
+
+    >>> len(x)
+    2
+
+    >>> x = unique([-1,1,1,1,1,1,1,2])
+
+    >>> 1 in x
+    True
+
+    >>> -1 in x
+    True
+
+    >>> 2 in x
+    True
+
+    >>> len(x)
+    3
+
+    >>> x = unique([-1,2,'1'])
+
+    >>> 1 in x
+    False
+
+    >>> -1 in x
+    True
+
+    >>> 2 in x
+    True
+
+    >>> '1' in x
+    True
+
+    >>> len(x)
+    3
     """
     return list(set(lst))
 
