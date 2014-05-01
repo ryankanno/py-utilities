@@ -16,7 +16,6 @@ class TestImageHelper(unittest.TestCase):
         size_obj = Size(rand_width_height_tuple)
         ok_(size_obj.width == rand_width)
         ok_(size_obj.height == rand_height)
-        ok_(size_obj.aspect_ratio == (rand_width / rand_height))
         ok_(size_obj.size == rand_width_height_tuple)
 
 # vim: filetype=python
