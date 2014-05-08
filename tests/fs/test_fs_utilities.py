@@ -2,11 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from ..helpers import write_file_contents
-from nose.tools import eq_
 from nose.tools import ok_
 from nose.tools import raises
 import os
-from py_utilities.fs.fs_utilities import cd
 from py_utilities.fs.fs_utilities import mkdir_p
 from py_utilities.fs.fs_utilities import rm_if_exists
 from py_utilities.fs.fs_utilities import rm_rf
@@ -26,16 +24,6 @@ class TestFs(unittest.TestCase):
         tmp_foo = os.path.join(self.temp_dir, 'foo')
         if os.path.exists(tmp_foo):
             shutil.rmtree(tmp_foo)
-
-    def test_cd(self):
-        curr = os.getcwd()
-        path = os.path.realpath(self.temp_dir)
-        with cd(path):
-            cwd = os.getcwd()
-            ok_(curr != cwd)
-            eq_(cwd, path)
-        cwd = os.getcwd()
-        eq_(curr, cwd)
 
     def test_mkdir_p(self):
         tmp_foo = os.path.join(self.temp_dir, 'foo')
