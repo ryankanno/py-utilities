@@ -37,3 +37,6 @@ coverage.xml
 .pydevproject
 
 temp
+
+# docs
+docs/_build
