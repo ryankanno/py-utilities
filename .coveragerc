@@ -4,3 +4,13 @@ omit =
     */python?.?/*
     */site-packages/nose/*
     */tests/*
+    py_utilities/__init__.py
+    py_utilities/collections/__init__.py
+    py_utilities/dev/__init__.py
+    py_utilities/http/__init__.py
+    py_utilities/image/__init__.py
+    py_utilities/math/__init__.py
+    py_utilities/mixins/__init__.py
+    py_utilities/text/__init__.py
+    py_utilities/time/__init__.py
+    py_utilities/ui/__init__.py
