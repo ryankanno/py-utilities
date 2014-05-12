@@ -11,6 +11,9 @@ setup(name='py-utilities',
       author='Ryan Kanno',
       author_email='ryankanno@localkinegrinds.com',
       packages=find_packages(),
-      url="https://github.com/ryankanno/py-utilities")
+      url="https://github.com/ryankanno/py-utilities",
+      install_requires=['pytz', 'importlib', 'scrypt'],
+      license='MIT',
+      tests_require=['flake8', 'mock', 'nose', 'nosexcover'])
 
 # vim: filetype=python
