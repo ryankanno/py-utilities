@@ -7,7 +7,7 @@ import warnings
 import webbrowser
 
 
-def browser(html, ip='127.0.0.1', port=0):
+def browser(html, ip='127.0.0.1', port=0):  # pragma: no cover
     class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         def do_GET(self):
             self.wfile.write(html)
