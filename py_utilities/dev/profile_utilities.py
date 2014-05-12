@@ -7,7 +7,7 @@ import pstats
 import StringIO
 
 
-def profile(sortby='cumulative'):
+def profile(sortby='cumulative'):  # pragma: no cover
     def _inner(func):
         @functools.wraps(func)
         def _wrapper(*args, **kwargs):
