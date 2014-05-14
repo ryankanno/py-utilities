@@ -3,9 +3,11 @@
 
 from ..helpers import write_file_contents
 from nose.tools import eq_
+from nose.tools import ok_
 import os
 from py_utilities.fs.file_utilities import concat
 from py_utilities.fs.file_utilities import copy_file
+from py_utilities.fs.file_utilities import crc32
 from py_utilities.fs.file_utilities import write_file
 import shutil
 import StringIO
@@ -41,6 +43,10 @@ class TestFileUtilities(unittest.TestCase):
         output = StringIO.StringIO()
         copy_file(self.test_file, output)
         eq_(output.getvalue(), 'Name,Age\nRyan,21\nBob,22\nJoe,23\n')
+
+    def test_crc32(self):
+        crc = crc32(os.path.join(self.cwd, './data/foobar.txt'))
+        ok_(crc == 'ECEFF2A5')
 
     def test_write_file(self):
         tmp_file = os.path.join(self.temp_dir, 'file')
