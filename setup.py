@@ -12,7 +12,7 @@ setup(
     author_email='ryankanno@localkinegrinds.com',
     url="https://github.com/ryankanno/py-utilities",
     packages=find_packages(),
-    install_requires=['pytz', 'importlib', 'scrypt'],
+    install_requires=['pytz', 'importlib', 'scrypt', 'xlrd', 'ordereddict'],
     license='MIT',
     tests_require=['flake8', 'mock', 'nose', 'nosexcover'],
     classifiers=[
