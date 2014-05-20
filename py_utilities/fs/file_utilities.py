@@ -72,6 +72,12 @@ def file_hexdigest(file_path, algo='md5'):
     return hash.hexdigest()
 
 
+def iter_files(src_dir):
+    for root, dirs, files in os.walk(src_dir):
+        for f in files:
+            yield os.path.join(root, f)
+
+
 def write_file(file_path, contents):
     """
     Writes contents to file path
