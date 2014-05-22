@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from ..decorators import safe
 import errno
 import os
 import shutil
@@ -39,6 +40,14 @@ def rm_rf(path, ignore_errors=True):
     Recursive directory deletion function.
     """
     shutil.rmtree(path, ignore_errors=ignore_errors)
+
+
+@safe(lambda path: os.stat(path), (os.error,))
+def safe_stat(path):
+    """
+    Return stat system call (without raising an ``os.error``)
+    """
+    pass
 
 
 def touch(path, times=None):

@@ -22,4 +22,22 @@ def run_once(func):
     wrapper.has_run = False
     return wrapper
 
+
+def safe(func, exceptions_to_catch=None):
+    def decorator(f):
+        @functools.wraps(f)
+        def wrapper(*args, **kwargs):
+            if exceptions_to_catch:
+                try:
+                    return func(*args, **kwargs)
+                except exceptions_to_catch:
+                    return None
+            else:
+                try:
+                    return func(*args, **kwargs)
+                except:
+                    return None
+        return wrapper
+    return decorator
+
 # vim: filetype=python
