@@ -5,6 +5,6 @@ install:
   - pip install tox
   - pip install coveralls
 script:
-  - tox
+  - tox --recreate
 after_success:
   - coveralls
