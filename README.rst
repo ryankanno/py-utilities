@@ -1,6 +1,9 @@
 py-utilities
 ============
 
+.. image:: https://badge.fury.io/py/py-utilities.svg
+    :target: http://badge.fury.io/py/py-utilities
+
 .. image:: https://travis-ci.org/ryankanno/py-utilities.png?branch=master
    :target: https://travis-ci.org/ryankanno/py-utilities
 
