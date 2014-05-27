@@ -1,10 +1,11 @@
+include CHANGES
 include LICENSE
-include README.rst
 include MANIFEST.in
-include TODO
-include setup.py
-include requirements.txt
+include README.rst
 include requirements-tox.txt
+include requirements.txt
+include setup.py
+include TODO
 recursive-include py_utilities *.py
 recursive-include tests *.py
 recursive-include docs *
