@@ -1,12 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
+
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
 import py_utilities
+
+setup_dir = os.path.dirname(os.path.realpath(__file__))
 
 packages = [
     'py_utilities',
@@ -28,10 +32,10 @@ packages = [
 requires = ['pytz', 'importlib', 'scrypt', 'xlrd', 'ordereddict']
 tests_require = ['flake8', 'mock', 'nose', 'nosexcover']
 
-with open('README.rst') as f:
+with open(os.path.join(setup_dir, 'README.rst')) as f:
     readme = f.read()
 
-with open('CHANGES') as f:
+with open(os.path.join(setup_dir, 'CHANGES')) as f:
     changes = f.read()
 
 classifiers = [
