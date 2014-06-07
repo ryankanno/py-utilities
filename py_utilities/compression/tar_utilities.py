@@ -6,7 +6,8 @@ import os
 import tarfile
 
 
-def create_tarball(dirs_to_tarball, tarball_name, save_dir, gzip=True):
+def create_tarball(dirs_to_tarball, tarball_name, save_dir,
+                   backup_date_fmt="%Y%m%d_%H%M%S", gzip=True):
 
     utcnow = datetime.datetime.utcnow()
 
@@ -17,18 +18,27 @@ def create_tarball(dirs_to_tarball, tarball_name, save_dir, gzip=True):
         tar_opts = 'w:'
         file_suffix = 'tar'
 
-    tarball_filename = "{}_{}.{}".format(
-        tarball_name,
-        utcnow.strftime("%Y%m%d_%H%M%S"),
-        file_suffix
-    )
+    if backup_date_fmt:
+        tarball_filename = "{0}_{1}.{2}".format(
+            tarball_name,
+            utcnow.strftime(backup_date_fmt),
+            file_suffix)
+    else:
+        tarball_filename = "{0}.{1}".format(
+            tarball_name,
+            file_suffix)
 
     tarball_filepath = os.path.join(save_dir, tarball_filename)
 
-    with tarfile.open(tarball_filepath, tar_opts) as tar:
+    try:
+        tar = tarfile.open(tarball_filepath, tar_opts)
         for dir in dirs_to_tarball:
             tar.add(dir)
         return tarfile.is_tarfile(tarball_filepath)
+    except:
+        return False
+    finally:
+        tar.close()
 
 
 # vim: filetype=python
