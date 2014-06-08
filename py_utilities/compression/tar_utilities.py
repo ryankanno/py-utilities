@@ -35,7 +35,7 @@ def create_tarball(dirs_to_tarball, tarball_name, save_dir,
         for dir in dirs_to_tarball:
             tar.add(dir)
         return tarfile.is_tarfile(tarball_filepath)
-    except:
+    except:  # pragma: no cover
         return False
     finally:
         tar.close()

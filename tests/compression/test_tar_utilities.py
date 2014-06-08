@@ -34,4 +34,13 @@ class TestTarUtilities(unittest.TestCase):
                 tarball = tarfile.open(filename)
                 ok_(len(tarball.getmembers()) > 0)
 
+    def test_create_tarball(self):
+        create_tarball([self.test_dir], 'foobar2', self.temp_tar, gzip=False)
+        for file in os.listdir(self.temp_tar):
+            if 'foobar2' in file:
+                filename = os.path.join(self.temp_tar, file)
+                ok_(os.stat(filename).st_size > 0)
+                tarball = tarfile.open(filename)
+                ok_(len(tarball.getmembers()) > 0)
+
 # vim: filetype=python
