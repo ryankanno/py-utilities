@@ -72,8 +72,12 @@ def file_hexdigest(file_path, algo='md5'):
     return hash.hexdigest()
 
 
-def iter_files(src_dir):
-    for root, dirs, files in os.walk(src_dir):
+def iter_files(src_dir, **walk_args):
+    """
+    Returns a iterator to walk the files in `src_dir`. You can provide
+    additional arguments to `os.walk` via `walk_args`.
+    """
+    for root, dirs, files in os.walk(src_dir, walk_args):
         for f in files:
             yield os.path.join(root, f)
 

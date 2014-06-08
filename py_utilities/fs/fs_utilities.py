@@ -47,7 +47,7 @@ def safe_stat(path):
     """
     Return stat system call (without raising an ``os.error``)
     """
-    pass
+    pass  # pragma: no cover
 
 
 def touch(path, times=None):

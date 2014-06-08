@@ -8,6 +8,7 @@ import os
 from py_utilities.fs.fs_utilities import mkdir_p
 from py_utilities.fs.fs_utilities import rm_if_exists
 from py_utilities.fs.fs_utilities import rm_rf
+from py_utilities.fs.fs_utilities import safe_stat
 from py_utilities.fs.fs_utilities import touch
 import shutil
 import tempfile
@@ -73,6 +74,15 @@ class TestFs(unittest.TestCase):
         tmp_foo = os.path.join(self.temp_dir, 'foo')
         os.mkdir(tmp_foo)
         rm_if_exists(tmp_foo)
+
+    def test_safe_stat(self):
+        tmp_foo = os.path.join(self.temp_dir, 'fooness')
+        write_file_contents(tmp_foo, 'blah')
+        ok_(safe_stat(tmp_foo).st_size > 0)
+
+    def test_safe_stat_on_non_existent_file_should_not_raise_os_error(self):
+        tmp_foo = os.path.join(self.temp_dir, 'foodoesnotexist')
+        ok_(safe_stat(tmp_foo) is None)
 
     def test_touch(self):
         file = os.path.join(self.cwd, 'test_fs_utilities.py')
