@@ -8,9 +8,6 @@ import tarfile
 
 def create_tarball(dirs_to_tarball, tarball_name, save_dir,
                    backup_date_fmt="%Y%m%d_%H%M%S", gzip=True):
-
-    utcnow = datetime.datetime.utcnow()
-
     if gzip:
         tar_opts = 'w:gz'
         file_suffix = 'tar.gz'
@@ -19,6 +16,7 @@ def create_tarball(dirs_to_tarball, tarball_name, save_dir,
         file_suffix = 'tar'
 
     if backup_date_fmt:
+        utcnow = datetime.datetime.utcnow()
         tarball_filename = "{0}_{1}.{2}".format(
             tarball_name,
             utcnow.strftime(backup_date_fmt),
@@ -34,11 +32,15 @@ def create_tarball(dirs_to_tarball, tarball_name, save_dir,
         tar = tarfile.open(tarball_filepath, tar_opts)
         for dir in dirs_to_tarball:
             tar.add(dir)
-        return tarfile.is_tarfile(tarball_filepath)
     except:  # pragma: no cover
         return False
     finally:
         tar.close()
+
+    if tarfile.is_tarfile(tarball_filepath):
+        return tarball_filepath
+    else:
+        return None
 
 
 # vim: filetype=python
