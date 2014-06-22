@@ -12,6 +12,7 @@ except ImportError:
 packages = [
     'py_utilities',
     'py_utilities.collections',
+    'py_utilities.compression',
     'py_utilities.crypto',
     'py_utilities.dev',
     'py_utilities.excel',
@@ -61,7 +62,7 @@ with open(os.path.join(here, 'py_utilities/__init__.py'), 'r') as f:
 # Requires
 
 requires = ['pytz', 'importlib', 'scrypt', 'xlrd', 'ordereddict']
-tests_require = ['flake8', 'mock', 'nose', 'nosexcover']
+tests_require = ['flake8', 'mock', 'nose>=1.3', 'nosexcover']
 
 with open(os.path.join(here, 'README.rst')) as f:
     readme = f.read()
@@ -92,6 +93,7 @@ setup(
     license=meta['license'],
     tests_require=tests_require,
     classifiers=classifiers,
+    setup_requires=['nose>=1.3']
 )
 
 

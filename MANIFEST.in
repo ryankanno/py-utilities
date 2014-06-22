@@ -4,6 +4,7 @@ include MANIFEST.in
 include README.rst
 include requirements-tox.txt
 include requirements.txt
+include setup.cfg
 include setup.py
 include TODO
 recursive-include py_utilities *.py
