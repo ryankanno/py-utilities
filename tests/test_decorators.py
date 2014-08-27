@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 
 from nose.tools import ok_
+import os
 from py_utilities.decorators import apply
 from py_utilities.decorators import run_once
+from py_utilities.decorators import safe
 import unittest
 
 
@@ -23,6 +25,11 @@ def foo_once():
     return [1, 2, 3]
 
 
+@safe(lambda path: os.stat(path), None)
+def fake_foo():
+    pass
+
+
 class TestDecorator(unittest.TestCase):
 
     def test_apply(self):
@@ -38,5 +45,9 @@ class TestDecorator(unittest.TestCase):
         ok_(result2 is None)
         ok_(foo_once.__name__ == 'foo_once')
         ok_(foo_once.__doc__ == ' Foo_once docstring ')
+
+    def test_safe(self):
+        result = fake_foo('/var/tmp/asdlkfjsadlkfjasdklfjasl')
+        ok_(result is None)
 
 # vim: filetype=python
