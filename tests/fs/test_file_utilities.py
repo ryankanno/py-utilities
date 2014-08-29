@@ -8,6 +8,7 @@ import os
 from py_utilities.fs.file_utilities import concat
 from py_utilities.fs.file_utilities import copy_file
 from py_utilities.fs.file_utilities import crc32
+from py_utilities.fs.file_utilities import iter_files
 from py_utilities.fs.file_utilities import write_file
 import shutil
 import StringIO
@@ -47,6 +48,13 @@ class TestFileUtilities(unittest.TestCase):
     def test_crc32(self):
         crc = crc32(os.path.join(self.cwd, './data/foobar.txt'))
         ok_(crc == 'ECEFF2A5')
+
+    def test_iter_files(self):
+        test_dir = os.path.join(self.cwd, './data/iter_files_test')
+        count = 0
+        for file in iter_files(test_dir):
+            count += 1
+        ok_(count == 3)
 
     def test_write_file(self):
         tmp_file = os.path.join(self.temp_dir, 'file')
